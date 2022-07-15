@@ -142,6 +142,7 @@ timeline.push(prac_procedure, instructions3);
 
 /* define attributes */
 
+
 let cond1_stimuli = [
     {stimuli:'Lonely', trialtype: 'sit'},
     {stimuli:'Hopeful', trialtype: 'sit'},
@@ -207,7 +208,7 @@ let cond1_stimuli = [
     {stimuli:'Numb', trialtype: 'intero'},
     {stimuli:'Sleepy', trialtype: 'intero'}]
 
-    let emo_stimuli = ['HAPPY', 'BORED', 'EXCITED', 'SAD', 'CONFIDENT', 'ANGRY', 'ANXIOUS']
+    let emo_stimuli = ['HAPPY', 'BORED', 'EXCITED', 'SAD', 'CONFIDENT', 'ANGRY', 'ANXIOUS', 'THANKFUL']
 
     let trial_stimuli = [];
      for (let i = 0; i < emo_stimuli.length; i++)
@@ -244,9 +245,35 @@ let cond1_stimuli = [
         emo: jsPsych.timelineVariable('emoword'),
         attr: jsPsych.timelineVariable('attr'),
         condition: jsPsych.timelineVariable('cond')}};
+        
+      var fixation = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<div style="font-size:60px;">+</div>',
+        choices: "NO_KEYS" , /* participants cant submit a response */
+        trial_duration: 1000,
+      };
 
-    var eat_procedure = {
-      timeline: [two_words],
+  var block_pause = {
+    type: jsPsychHtmlKeyboardResponse,
+      stimulus: ` 
+    <p><div style="font-size:36px;"> <p><b>BREAK</b></p>3
+      <p>Please take a two minute break. </p><p>
+    <br>
+    <p>When you are ready, press any key to continue the task.</p>
+    `,
+    post_trial_gap: 12000
+    }
+
+    var eat_procedure1 = {
+      timeline: [fixation, two_words],
+      timeline_variables: trial_stimuli,
+      sample: {
+        type: "without-replacement",
+      }
+    }
+
+    var eat_procedure2 = {
+      timeline: [fixation, two_words],
       timeline_variables: trial_stimuli,
       sample: {
         type: "without-replacement",
@@ -256,13 +283,13 @@ let cond1_stimuli = [
     var instructions4 = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: ` 
-    <p><div style="font-size:36px;"> <p>The task is complete. Thank you for participating!.</p><p>
+    <p><div style="font-size:36px;"> <p>The task is complete. Thank you for participating!</p><p>
     <br>
     <p>Press any key to finish.</p>
 `
       };
 
-      timeline.push(eat_procedure, instructions4);
+      timeline.push(eat_procedure1, block_pause, eat_procedure2, instructions4);
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////    
