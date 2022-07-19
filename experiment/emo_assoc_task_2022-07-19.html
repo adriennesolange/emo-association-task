@@ -16,7 +16,8 @@
   var jsPsych = initJsPsych({
     on_finish: function() {
         var id = jsPsych.data.get().filter({task_part: 'id_question'}).values()[0].response.id;
-        var file_name = 'subject_' + id + '_test_data.csv';
+        var condition = jsPsych.data.get().filter({task_part: 'cond_question'}).values()[0].response.cond
+        var file_name = 'subject_' + id + condition + '_test_data.csv';
         jsPsych.data.get().localSave('csv',file_name);
       }
 });
@@ -31,6 +32,13 @@
     questions: [
         {prompt: "<What is your subject ID?", name: 'id', required: true}],
     data: {task_part: 'id_question'}
+  };
+
+  var condition_trial = {
+    type: jsPsychSurveyText,
+    questions: [
+        {prompt: "<What is your task condition? Please email epic@unc.edu if unsure", name: 'condition', required: true}],
+    data: {task_part: 'cond_question'}
   };
   
   var fullscreen_trial = {
@@ -313,19 +321,20 @@ let condB1_stimuli = [
     };
 
     var eat_procedure;
-        if (CONDITION == 1) {
-            timeline: [fixation, two_words_A, block_pause, two_words_B],
-            timeline_variables: trial_stimuliA, trial_stimuliB,
-            sample: {
-                type: "without-replacement",
-            }
-        }; else if (CONDITION == 2) {
-            timeline: [fixation, two_words_B, block_pause, two_words_A],
-            timeline_variables: trial_stimuliB, trial_stimuliA,
-            sample: {
-                type: "without-replacement",
-            }
-        }
+        if (condition_trial == 1){
+            timeline = [trial_stimuliA, block_pause, trial_stimuliB],
+            timeline_variables = [trial_stimuliA, trial_stimuliB],
+            sample= {
+        type: "without-replacement",
+      }
+    }; else {
+        timeline = [trial_stimuliB, block_pause, trial_stimuliA],
+            timeline_variables = [trial_stimuliB, trial_stimuliA],
+            sample= {
+        type: "without-replacement",
+      }
+        };
+
 
 
 
