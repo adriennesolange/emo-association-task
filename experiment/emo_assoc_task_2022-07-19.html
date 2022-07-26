@@ -191,11 +191,11 @@ let condA1_stimuli = [
     let trial_stimuliA = [];
      for (let i = 0; i < emoA_stimuli.length; i++)
      for (let t = 0; t < condA1_stimuli.length; t++) {
-       trial_stimuli.push({attr: condA1_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA1_stimuli[t].trialtype}),
-       trial_stimuli.push({attr: condA2_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA2_stimuli[t].trialtype}),
-       trial_stimuli.push({attr: condA3_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA3_stimuli[t].trialtype})}
+       trial_stimuliA.push({attr: condA1_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA1_stimuli[t].trialtype}),
+       trial_stimuliA.push({attr: condA2_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA2_stimuli[t].trialtype}),
+       trial_stimuliA.push({attr: condA3_stimuli[t].stimuli, emoword: emoA_stimuli[i], cond: condA3_stimuli[t].trialtype})}
        
-    var two_words_A = {
+    var two_wordsA = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: function() {
         return (
@@ -219,6 +219,7 @@ let condA1_stimuli = [
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Extremely `,
+        timeline_variables: trial_stimuliA,
       data: {
         emo: jsPsych.timelineVariable('emoword'),
         attr: jsPsych.timelineVariable('attr'),
@@ -269,11 +270,11 @@ let condB1_stimuli = [
     let trial_stimuliB = [];
      for (let i = 0; i < emoB_stimuli.length; i++)
      for (let t = 0; t < condB1_stimuli.length; t++) {
-       trial_stimuli.push({attr: condB1_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB1_stimuli[t].trialtype}),
-       trial_stimuli.push({attr: condB2_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB2_stimuli[t].trialtype}),
-       trial_stimuli.push({attr: condB3_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB3_stimuli[t].trialtype})}
+       trial_stimuliB.push({attr: condB1_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB1_stimuli[t].trialtype}),
+       trial_stimuliB.push({attr: condB2_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB2_stimuli[t].trialtype}),
+       trial_stimuliB.push({attr: condB3_stimuli[t].stimuli, emoword: emoB_stimuli[i], cond: condB3_stimuli[t].trialtype})}
        
-    var two_words_B = {
+    var two_wordsB = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: function() {
         return (
@@ -297,6 +298,7 @@ let condB1_stimuli = [
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Extremely `,
+        timeline_variables: trial_stimuliB,
       data: {
         emo: jsPsych.timelineVariable('emoword'),
         attr: jsPsych.timelineVariable('attr'),
@@ -322,21 +324,17 @@ let condB1_stimuli = [
 
     var eat_procedure;
         if (condition_trial == 1){
-            timeline = [trial_stimuliA, block_pause, trial_stimuliB],
-            timeline_variables = [trial_stimuliA, trial_stimuliB],
+            timeline = [two_wordsA, block_pause, two_wordsB],
             sample= {
-        type: "without-replacement",
+        type: "without-replacement"
       }
-    }; else {
-        timeline = [trial_stimuliB, block_pause, trial_stimuliA],
-            timeline_variables = [trial_stimuliB, trial_stimuliA],
+    } else {        
+        timeline = [two_wordsB, block_pause, two_wordsA],
             sample= {
-        type: "without-replacement",
-      }
-        };
+        type: "without-replacement"
+    }
 
-
-
+      };
 
     var instructions4 = {
       type: jsPsychHtmlKeyboardResponse,
