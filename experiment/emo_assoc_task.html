@@ -62,7 +62,8 @@
   var instructions2 = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: ` 
-    <p><div style="font-size:36px;"> <p>Please respond to each questions as <strong>quickly</strong> and as <strong>accurately</strong> as you can</p><p><p>based on your gut response.</p><p>
+    <p><div style="font-size:36px;"> <p>Please respond to each questions as</> 
+      <p><strong>quickly</strong> and as <strong>accurately</strong> as you can</p><p>based on your gut response.</p><p>
     <br>
     <p>Press any key to see four practice trials.</p>
 `  
@@ -77,8 +78,8 @@ let prac1_stimuli = [
     {stimuli:'PEPPER', trialtype: 'prac1'}]
 
     let prac2_stimuli = [
-    {stimuli:'GRAPES', trialtype: 'prac2'},
-    {stimuli:'APPLES', trialtype: 'prac2'}]
+    {stimuli:'GRAPE', trialtype: 'prac2'},
+    {stimuli:'APPLE', trialtype: 'prac2'}]
 
     let color_stimuli = ['YELLOW', 'GREEN']
 
@@ -115,9 +116,17 @@ let prac1_stimuli = [
         emo: jsPsych.timelineVariable('colorword'),
         attr: jsPsych.timelineVariable('pracattr'),
         condition: jsPsych.timelineVariable('praccond')}};
+        
+        
+    var fixation = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<div style="font-size:60px;">+</div>',
+        choices: "NO_KEYS" , /* participants cant submit a response */
+        trial_duration: 1000,trial_duration: 1000,
+  };
 
     var prac_procedure = {
-      timeline: [two_images],
+      timeline: [fixation, two_images],
       timeline_variables: prac_stimuli,
       randomize_order: true,
       sample: {
@@ -245,28 +254,21 @@ let cond1_stimuli = [
         emo: jsPsych.timelineVariable('emoword'),
         attr: jsPsych.timelineVariable('attr'),
         condition: jsPsych.timelineVariable('cond')}};
-        
-      var fixation = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: '<div style="font-size:60px;">+</div>',
-        choices: "NO_KEYS" , /* participants cant submit a response */
-        trial_duration: 1000,
-      };
 
   var block_pause = {
     type: jsPsychHtmlKeyboardResponse,
       stimulus: ` 
-    <p><div style="font-size:36px;"> <p><b>BREAK</b></p>3
-      <p>Please take a two minute break. </p><p>
+    <p><div style="font-size:36px;"> <p><b>BREAK</b></p>
+      <p>The task is halfway done.<p/p><p>Please take a two minute break. </p><p>
     <br>
-    <p>When you are ready, press any key to continue the task.</p>
+    <p>When you are ready, press any key to continue.</p>
     `,
     post_trial_gap: 12000
     }
 
     var eat_procedure1 = {
       timeline: [fixation, two_words],
-      timeline_variables: trial_stimuli,
+      timeline_variables: trial_stimuli.slice(0,239),
       sample: {
         type: "without-replacement",
       }
@@ -274,7 +276,7 @@ let cond1_stimuli = [
 
     var eat_procedure2 = {
       timeline: [fixation, two_words],
-      timeline_variables: trial_stimuli,
+      timeline_variables: trial_stimuli.slice(240),
       sample: {
         type: "without-replacement",
       }
