@@ -182,7 +182,7 @@ let cond1_stimuli = [
     {stimuli:'Chin up', trialtype: 'beh'},
     {stimuli:'Talkative', trialtype: 'beh'},
     {stimuli:'Frowning', trialtype: 'beh'},
-    {stimuli:'Hide', trialtype: 'beh'},
+    {stimuli:'Run away', trialtype: 'beh'},
     {stimuli:'Aggressive', trialtype: 'beh'},
     {stimuli:'Moving slowly', trialtype: 'beh'},
     {stimuli:'Frozen in place', trialtype: 'beh'},
@@ -268,12 +268,12 @@ let cond1_stimuli = [
 
     var eat_procedure1 = {
       timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(0,239),
+      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(0,2),
     }
 
     var eat_procedure2 = {
       timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(240),
+      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(3,5),
     }
 
     var instructions4 = {
