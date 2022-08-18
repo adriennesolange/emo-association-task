@@ -21,7 +21,7 @@
       }
 });
 
-  
+  /* GOAL IS 10 MINUTES */
   /* create timeline */
   var timeline= [];
   
@@ -122,7 +122,7 @@ let prac1_stimuli = [
         type: jsPsychHtmlKeyboardResponse,
         stimulus: '<div style="font-size:60px;">+</div>',
         choices: "NO_KEYS" , /* participants cant submit a response */
-        trial_duration: 1000,trial_duration: 1000,
+        trial_duration: 500,trial_duration: 500,
   };
 
     var prac_procedure = {
@@ -158,10 +158,10 @@ let cond1_stimuli = [
     {stimuli:'Dangerous', trialtype: 'sit'},
     {stimuli:'Hopeless', trialtype: 'sit'},
     {stimuli:'Failure', trialtype: 'sit'},
-    {stimuli:'Interesting', trialtype: 'sit'},
+    {stimuli:'Thankful', trialtype: 'sit'},
     {stimuli:'Loss', trialtype: 'sit'},
     {stimuli:'Motivating', trialtype: 'sit'},
-    {stimuli:'Not interesting', trialtype: 'sit'},
+    {stimuli:'Discouraged', trialtype: 'sit'},
     {stimuli:'Challenged', trialtype: 'sit'},
     {stimuli:'Rejected', trialtype: 'sit'},
     {stimuli:'Safe', trialtype: 'sit'},
@@ -200,14 +200,14 @@ let cond1_stimuli = [
     {stimuli:'Hot', trialtype: 'intero'},
     {stimuli:'Jittety', trialtype: 'intero'},
     {stimuli:'Lump in throat', trialtype: 'intero'},
-    {stimuli:'Pale', trialtype: 'intero'},
+    {stimuli:'Sluggish', trialtype: 'intero'},
     {stimuli:'Relaxed', trialtype: 'intero'},
     {stimuli:'Sweaty', trialtype: 'intero'},
     {stimuli:'Stomach ache', trialtype: 'intero'},
     {stimuli:'Tense', trialtype: 'intero'},
     {stimuli:'Alert', trialtype: 'intero'},
     {stimuli:'Numb', trialtype: 'intero'},
-    {stimuli:'Sleepy', trialtype: 'intero'}]
+    {stimuli:'Tired', trialtype: 'intero'}]
 
     let emo_stimuli = ['HAPPY', 'EXCITED', 'SAD', 'CONFIDENT', 'ANGRY', 'ANXIOUS']
 
@@ -255,7 +255,7 @@ let cond1_stimuli = [
     <br>
     <p>When you are ready, press any key to continue.</p>
     `,
-    post_trial_gap: 12000
+    post_trial_gap: 500
     }
 
     var eat_procedure1 = {
