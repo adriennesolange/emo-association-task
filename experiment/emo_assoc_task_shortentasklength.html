@@ -168,7 +168,7 @@ let cond1_stimuli = [
     {stimuli:'Attentive', trialtype: 'beh'},
     {stimuli:'Friendly', trialtype: 'beh'},
     {stimuli:'Aggressive', trialtype: 'beh'},
-    {stimuli:'Startled', trialtype: 'beh'},
+    {stimuli:'Shaking', trialtype: 'beh'},
     {stimuli:'Smiling', trialtype: 'beh'},
     {stimuli:'Thoughts racing', trialtype: 'beh'},]
 
@@ -176,7 +176,7 @@ let cond1_stimuli = [
     {stimuli:'Energized', trialtype: 'intero'},
     {stimuli:'Chills', trialtype: 'intero'},
     {stimuli:'Heart racing', trialtype: 'intero'},
-    {stimuli:'Jittety', trialtype: 'intero'},
+    {stimuli:'Jittery', trialtype: 'intero'},
     {stimuli:'Relaxed', trialtype: 'intero'},
     {stimuli:'Sweaty', trialtype: 'intero'},
     {stimuli:'Stomach ache', trialtype: 'intero'},
@@ -220,25 +220,9 @@ let cond1_stimuli = [
         attr: jsPsych.timelineVariable('attr'),
         condition: jsPsych.timelineVariable('cond')}};
 
-  var block_pause = {
-    type: jsPsychHtmlKeyboardResponse,
-      stimulus: ` 
-    <p><div style="font-size:36px;"> <p><b>BREAK</b></p>
-      <p>The task is halfway done.<p/p><p>Please take a two minute break. </p><p>
-    <br>
-    <p>When you are ready, press any key to continue.</p>
-    `,
-    post_trial_gap: 500
-    }
-
     var eat_procedure1 = {
       timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(0,153),
-    }
-
-    var eat_procedure2 = {
-      timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(154),
+      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli),
     }
 
     var instructions4 = {
@@ -250,7 +234,7 @@ let cond1_stimuli = [
 `
       };
 
-      timeline.push(eat_procedure1, block_pause, eat_procedure2, instructions4);
+      timeline.push(eat_procedure1, instructions4);
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////    
