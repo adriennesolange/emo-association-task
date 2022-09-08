@@ -21,7 +21,7 @@
       }
 });
 
-  
+  /* GOAL IS 10 MINUTES */
   /* create timeline */
   var timeline= [];
   
@@ -47,7 +47,7 @@
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
     <p><div style="font-size:36px;">For this task you will read a series of questions.</p><p>
-      <p>For each questions, you will indicate how much you </p><p><p>associate two words on a scale from 1 to 5.</p><p>
+      <p>For each question, you will indicate how related two words are on a scale from 1 to 5.</p><p>
         <br>
         <p>1 = NOT AT ALL</p><p>
         <p>2 = A LITTLE BIT</p><p>
@@ -55,15 +55,17 @@
         <p>4 = A LOT</p><p>
         <p>5 = VERY STRONGLY</p><p>
         <br>
-      <p>Press any key to continue.</p></div>
+
+        <p>Press any key to continue.</p></div>
       </p><p>`
       };
       
   var instructions2 = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: ` 
-    <p><div style="font-size:36px;"> <p>Please respond to each questions as</> 
+    <p><div style="font-size:36px;"> <p>Please respond to each question as</> 
       <p><strong>quickly</strong> and as <strong>accurately</strong> as you can</p><p>based on your gut response.</p><p>
+      <p>There are no wrong answers.</p>
     <br>
     <p>Press any key to see four practice trials.</p>
 `  
@@ -122,7 +124,7 @@ let prac1_stimuli = [
         type: jsPsychHtmlKeyboardResponse,
         stimulus: '<div style="font-size:60px;">+</div>',
         choices: "NO_KEYS" , /* participants cant submit a response */
-        trial_duration: 1000,trial_duration: 1000,
+        trial_duration: 500,trial_duration: 500,
   };
 
     var prac_procedure = {
@@ -153,70 +155,36 @@ timeline.push(prac_procedure, instructions3);
 
 
 let cond1_stimuli = [
-    {stimuli:'Alone', trialtype: 'sit'},
     {stimuli:'Hopeful', trialtype: 'sit'},
     {stimuli:'Dangerous', trialtype: 'sit'},
     {stimuli:'Hopeless', trialtype: 'sit'},
-    {stimuli:'Failure', trialtype: 'sit'},
-    {stimuli:'Argument', trialtype: 'sit'},
-    {stimuli:'Interesting', trialtype: 'sit'},
-    {stimuli:'Loss', trialtype: 'sit'},
-    {stimuli:'Motivating', trialtype: 'sit'},
-    {stimuli:'Not interesting', trialtype: 'sit'},
+    {stimuli:'Motivated', trialtype: 'sit'},
+    {stimuli:'Discouraged', trialtype: 'sit'},
     {stimuli:'Challenged', trialtype: 'sit'},
-    {stimuli:'Rejected', trialtype: 'sit'},
-    {stimuli:'Safe', trialtype: 'sit'},
-    {stimuli:'Supported', trialtype: 'sit'},
-    {stimuli:'Unsafe', trialtype: 'sit'},
-    {stimuli:'Unexpected', trialtype: 'sit'},
     {stimuli:'Offended', trialtype: 'sit'},
-    {stimuli:'Unfair', trialtype: 'sit'},
-    {stimuli:'Good news', trialtype: 'sit'},]
+    {stimuli:'Hurt', trialtype: 'sit'},]
 
     let cond2_stimuli = [
-    {stimuli:'Impulsive', trialtype: 'beh'},
-    {stimuli:'Clenching fists', trialtype: 'beh'},
     {stimuli:'Crying', trialtype: 'beh'},
     {stimuli:'Distracted', trialtype: 'beh'},
     {stimuli:'Attentive', trialtype: 'beh'},
     {stimuli:'Friendly', trialtype: 'beh'},
-    {stimuli:'Loud', trialtype: 'beh'},
-    {stimuli:'Talkative', trialtype: 'beh'},
-    {stimuli:'Frowning', trialtype: 'beh'},
     {stimuli:'Aggressive', trialtype: 'beh'},
-    {stimuli:'Moving slowly', trialtype: 'beh'},
-    {stimuli:'Startled', trialtype: 'beh'},
-    {stimuli:'Quiet', trialtype: 'beh'},
-    {stimuli:'Shrugging', trialtype: 'beh'},
-    {stimuli:'Smiling', trialtype: 'beh'},
-    {stimuli:'Thoughts racing', trialtype: 'beh'},
     {stimuli:'Shaking', trialtype: 'beh'},
-    {stimuli:'Laughing', trialtype: 'beh'},
-    {stimuli:'Yawning', trialtype: 'beh'},]
+    {stimuli:'Smiling', trialtype: 'beh'},
+    {stimuli:'Thoughts racing', trialtype: 'beh'},]
 
     let cond3_stimuli = [
     {stimuli:'Energized', trialtype: 'intero'},
-    {stimuli:'Blushing', trialtype: 'intero'},
-    {stimuli:'Breathless', trialtype: 'intero'},
-    {stimuli:'Butterflies', trialtype: 'intero'},
     {stimuli:'Chills', trialtype: 'intero'},
-    {stimuli:'Fast breathing', trialtype: 'intero'},
-    {stimuli:'Headache', trialtype: 'intero'},
     {stimuli:'Heart racing', trialtype: 'intero'},
-    {stimuli:'Hot', trialtype: 'intero'},
-    {stimuli:'Jittety', trialtype: 'intero'},
-    {stimuli:'Lump in throat', trialtype: 'intero'},
-    {stimuli:'Pale', trialtype: 'intero'},
-    {stimuli:'Relaxed', trialtype: 'intero'},
+    {stimuli:'Jittery', trialtype: 'intero'},
+    {stimuli:'Calm', trialtype: 'intero'},
     {stimuli:'Sweaty', trialtype: 'intero'},
     {stimuli:'Stomach ache', trialtype: 'intero'},
-    {stimuli:'Tense', trialtype: 'intero'},
-    {stimuli:'Light-headed', trialtype: 'intero'},
-    {stimuli:'Alert', trialtype: 'intero'},
-    {stimuli:'Numb', trialtype: 'intero'},
-    {stimuli:'Sleepy', trialtype: 'intero'}]
+    {stimuli:'Tense', trialtype: 'intero'}]
 
-    let emo_stimuli = ['HAPPY', 'BORED', 'EXCITED', 'SAD', 'CONFIDENT', 'ANGRY', 'ANXIOUS']
+    let emo_stimuli = ['HAPPY', 'EXCITED', 'SAD', 'CONFIDENT', 'ANGRY', 'ANXIOUS']
 
     let trial_stimuli = [];
      for (let i = 0; i < emo_stimuli.length; i++)
@@ -254,25 +222,9 @@ let cond1_stimuli = [
         attr: jsPsych.timelineVariable('attr'),
         condition: jsPsych.timelineVariable('cond')}};
 
-  var block_pause = {
-    type: jsPsychHtmlKeyboardResponse,
-      stimulus: ` 
-    <p><div style="font-size:36px;"> <p><b>BREAK</b></p>
-      <p>The task is halfway done.<p/p><p>Please take a two minute break. </p><p>
-    <br>
-    <p>When you are ready, press any key to continue.</p>
-    `,
-    post_trial_gap: 12000
-    }
-
     var eat_procedure1 = {
       timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(0,239),
-    }
-
-    var eat_procedure2 = {
-      timeline: [fixation, two_words],
-      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli).slice(240),
+      timeline_variables: jsPsych.randomization.sampleWithoutReplacement(trial_stimuli),
     }
 
     var instructions4 = {
@@ -284,7 +236,7 @@ let cond1_stimuli = [
 `
       };
 
-      timeline.push(eat_procedure1, block_pause, eat_procedure2, instructions4);
+      timeline.push(eat_procedure1, instructions4);
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////    
