@@ -16,7 +16,7 @@
   var jsPsych = initJsPsych({
     on_finish: function() {
         var id = jsPsych.data.get().filter({task_part: 'id_question'}).values()[0].response.id;
-        var file_name = 'subject_' + id + '_test_data.csv';
+        var file_name = 'subject_' + id + '_EAT_data.csv';
         jsPsych.data.get().localSave('csv',file_name);
       }
 });
